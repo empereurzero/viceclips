@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex">
+<title>Retour vers Clipper</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <h1>Retour vers Clipper…</h1>
+  <p>Cette page renvoie la connexion vers Clipper, qui tourne sur ton propre ordinateur.
+     Si rien ne se passe, <a id="lien" href="http://localhost:8777/">clique ici</a>.</p>
+  <p>Aucune donnée n'est conservée sur cette page.</p>
+</main>
+<script>
+  // Relais de connexion (Meta refuse http://localhost en mode Live) : on renvoie les paramètres
+  // de retour (code, state, erreur) tels quels vers Clipper, toujours vers la même adresse locale.
+  (function () {
+    var cible = "http://localhost:8777/" + window.location.search;
+    document.getElementById("lien").href = cible;
+    if (window.location.search) { window.location.replace(cible); }
+  })();
+</script>
+</body>
+</html>
